@@ -1,0 +1,97 @@
+.container {
+  margin-left: 110px;
+  margin-right: 50px;
+}
+
+.Title1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 30px;
+  flex: 1;
+}
+.Title2 {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.Logo1 {
+  width: 140px;
+  height: 120px;
+  margin-top: 20px;
+}
+.parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Frontcartlogo {
+  margin-top: 10px;
+  flex: 1;
+  text-align: right;
+}
+.Frontcartlogo1 {
+  font-size: 30px;
+}
+.Optionbutton {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.Menusize1 img {
+  width: 155px;
+  height: 155px;
+}
+.Menusize1 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.Menusize2 {
+  margin: 0 0 20px 31px;
+  display: flex;
+  width: 47%;
+}
+.Menusize-image {
+  border: 3px solid rgb(188, 156, 110);
+  border-radius: 8px;
+}
+.Menusize-image img {
+  width: 233px;
+  height: 152px;
+}
+.Optionbutton button {
+  border-radius: 6px;
+  margin-left: 8px;
+
+  border: 2px solid rgb(188, 156, 110);
+  background-color: rgb(255, 255, 254);
+}
+.nameprice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(23, 22, 22);
+}
+.price {
+  color: rgb(188, 156, 110);
+}
+.name {
+}
+.Menusize-content {
+  margin-left: 10px;
+}
+.cartbutton {
+  border-radius: 6px;
+  margin-left: 8px;
+  border: 2px solid rgb(133, 113, 83);
+  background-color: rgb(255, 255, 254);
+  text-align: right;
+}
+.Applogo {
+  flex: 1;
+}
+.Buttoncart {
+  width: 100%;
+  text-align: right;
+}
