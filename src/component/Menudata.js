@@ -11,7 +11,7 @@ const data = [
   {
     id: 1,
     image: B1,
-    category: "Breakfast",
+    category: "lunch",
     name: "Burger",
     price: "70",
     about:
@@ -29,7 +29,7 @@ const data = [
   {
     id: 3,
     image: B3,
-    category: "Breakfast",
+    category: "lunch",
     name: "paasta",
     price: "60",
     about:
@@ -47,7 +47,7 @@ const data = [
   {
     id: 5,
     image: B5,
-    category: "Breakfast",
+    category: "lunch",
     name: "Jalebi",
     price: "100",
     about:

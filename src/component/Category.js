@@ -1,14 +1,25 @@
 import React from "react";
-
-function Category() {
+const Category = ({ activMenu, filteritem, uniqueList }) => {
   return (
-    <div className="Optionbutton">
-      <button className="Optionbutton1">All</button>
-      <button className="Optionbutton1">Breakfast</button>
-      <button className="Optionbutton1">Lunch</button>
-      <button className="Optionbutton1">Shakes</button>
-    </div>
+    <nav className="navbar">
+      <div className="Title2"> Our Menu </div>
+      <div className="Optionbutton">
+        {uniqueList.map((curElem, index) => {
+          return (
+            <button
+              className={`Optionbutton1 ${
+                activMenu === curElem ? "activeMenu" : ""
+              }`}
+              key={index}
+              onClick={() => filteritem(curElem)}
+            >
+              {curElem}
+            </button>
+          );
+        })}
+      </div>
+    </nav>
   );
-}
+};
 
 export default Category;

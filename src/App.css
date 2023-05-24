@@ -8,6 +8,7 @@
   margin-top: 40px;
   font-size: 30px;
   flex: 1;
+  font-weight: bold;
 }
 .Title2 {
   text-align: center;
@@ -60,8 +61,9 @@
   border-radius: 8px;
 }
 .Optionbutton button {
-  border-radius: 6px;
+  border-radius: 15px;
   margin-left: 8px;
+  padding: 7px 9px 8px 14px;
 
   border: 2px solid rgb(188, 156, 110);
   background-color: rgb(255, 255, 254);
@@ -76,16 +78,18 @@
   color: rgb(188, 156, 110);
 }
 .name {
+  letter-spacing: 4px;
 }
 .Menusize-content {
   margin-left: 10px;
 }
 .cartbutton {
-  border-radius: 6px;
+  border-radius: 50px;
   margin-left: 8px;
-  border: 2px solid rgb(133, 113, 83);
+  border: 1px solid rgb(175, 151, 116);
   background-color: rgb(255, 255, 254);
   text-align: right;
+  padding: 5px 9px 3px 8px;
 }
 .Applogo {
   flex: 1;
@@ -93,4 +97,108 @@
 .Buttoncart {
   width: 100%;
   text-align: right;
+}
+.shoopingcart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.plusbutton {
+  color: rgb(211, 150, 150);
+}
+.cartbutton1 {
+  border-radius: 50px;
+  margin-left: 8px;
+  border: 1px solid rgb(175, 151, 116);
+  background-color: rgb(255, 255, 254);
+  text-align: right;
+  padding: 5px 9px 3px 8px;
+}
+.Optionbutton :hover {
+  background-color: rgb(175, 151, 116);
+  color: rgb(236, 240, 213);
+}
+.activeMenu {
+  background-color: rgb(175, 151, 116) !important;
+  color: rgb(236, 240, 213) !important;
+}
+.Deletecartbuttonlogo {
+  color: rgb(245, 16, 17);
+  width: 61px;
+  height: 35px;
+}
+.Cartlistp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cartimageandar {
+  border-radius: 90px;
+  height: 100px;
+  width: 100px;
+}
+.cartproductname {
+  font-weight: 450;
+  font-size: 20px;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.cartplusminusbutton {
+  display: flex;
+  align-items: center;
+}
+.cartquantity {
+  color: rgb(245, 16, 17);
+}
+.cartpluspluscounter {
+  border: 1px solid rgb(175, 151, 116);
+  border-radius: 16px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+}
+.cartpluspluscounter button {
+  border: none;
+  background-color: transparent;
+}
+.Clearitemcartlogo {
+  color: white;
+  width: 30px;
+  height: 30px;
+}
+.Clearitemcart button {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  margin: auto;
+  border: 1px solid rgb(175, 151, 116);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(228, 75, 98);
+  color: white;
+}
+.ClearAll {
+  font-size: 20px;
+}
+.Price {
+  text-align: right;
+  display: block;
+  font-size: 25px;
+}
+.removebutton {
+  border-radius: 50px;
+  margin-left: 8px;
+  border: 1px solid rgb(175, 151, 116);
+  background-color: rgb(255, 255, 254);
+  text-align: right;
+  padding: 5px 9px 3px 8px;
+}
+.cartbutton:hover {
+  color: rgb(255, 255, 252);
+  background-color: rgb(175, 151, 116);
+}
+.removebutton:hover {
+  color: rgb(255, 255, 252);
+  background-color: rgb(175, 151, 116);
 }
