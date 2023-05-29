@@ -1,17 +1,5 @@
 import React from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-// import { useState } from "react";
-
-// const [count, SetCount] = useState[0];
-
-// function ct() {
-//   SetCount(count + 1);
-// }
-// console.log("counttttttt", count);
-// console.log("SetCount", count);
-//     Function dynamic() {
-//         if(count>0) ?
-//
 
 function Product({
   menuData,
@@ -42,12 +30,12 @@ function Product({
             <div className="Menusize-content">
               <div className="nameprice">
                 <div className="name">
-                  <h3>{item.name}</h3>
+                  <h3>{item.title}</h3>
                 </div>
                 <div className="price"> ₹{item.price} </div>
               </div>
 
-              <p>{item.about}</p>
+              <p>{item.description}</p>
 
               <div className="Buttoncart">
                 {value(item) ? (
@@ -57,7 +45,6 @@ function Product({
                     className="cartbutton"
                     onClick={() => {
                       Addcartfunct(item);
-                      // ct();
                     }}
                   >
                     Add Item

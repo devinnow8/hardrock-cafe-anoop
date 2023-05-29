@@ -1,22 +1,21 @@
 import "./App.css";
 import Header from "./component/Header";
-
+import axios from "axios";
 import Product from "./component/Product";
 import React, { useEffect, useState } from "react";
-import menu from "./component/Menudata";
 import Category from "./component/Category";
 import Cartlist from "./component/Cartlist";
+import { MdSystemSecurityUpdateWarning } from "react-icons/md";
 
 function App() {
-  const [menuData, setMenudata] = useState(menu);
+  const [menuData, setMenudata] = useState([]);
   const [activMenu, setActivMenu] = useState("All");
   const [cart, setCart] = useState([]);
-
+  const [filterditem, setFilterditem] = useState([]);
   let cartobj = cart.map((x) => ({ Idd: x.id, quan: x.quantity }));
-
-  console.log(cart);
   const [showCart, setShowCart] = useState(false);
 
+  // Action For empty cart
   useEffect(() => {
     console.log("showCart11", cart);
 
@@ -26,6 +25,23 @@ function App() {
     }
   }, [cart]);
 
+  //API DATA"
+  const url = "http://192.168.1.204:8000/";
+  const getApidata = async (url) => {
+    try {
+      const res = await axios.get(url);
+      console.log("ffffff", res.data);
+
+      setMenudata(res.data);
+    } catch (errror) {
+      console.log("error");
+    }
+  };
+  useEffect(() => {
+    getApidata(`${url}`);
+  }, []);
+
+  //Cart Quantity
   const Addcartfunct = (product) => {
     console.log(product);
 
@@ -41,17 +57,25 @@ function App() {
     }
   };
 
+  // Category
+
   const uniqueList = [
     "All",
     ...new Set(
-      menu.map((curElem) => {
+      menuData.map((curElem) => {
         return curElem.category;
       })
     ),
   ];
   console.log(uniqueList);
+
+  useEffect(() => {
+    setFilterditem(menuData);
+  }, [menuData]);
+
+  //Category Filter
   const filteritem = (category) => {
-    const updatelist = menu.filter((curElem) => {
+    const updatelist = menuData.filter((curElem) => {
       if (category === "All") {
         return curElem;
       } else {
@@ -59,17 +83,21 @@ function App() {
       }
     });
     setActivMenu(category);
-    setMenudata(updatelist);
+    setFilterditem(updatelist);
   };
   const handleCartClick = () => {
     setShowCart(!showCart);
   };
+
+  //Clear Cart
 
   function clearcart() {
     setCart([]);
     console.log("showCart", showCart);
     setShowCart(false);
   }
+
+  // Cart Increment
   function cartcountinc(id) {
     const updatecart = cart.map((item, index) => {
       return item.id === id ? { ...item, quantity: item.quantity + 1 } : item;
@@ -77,6 +105,8 @@ function App() {
 
     setCart(updatecart);
   }
+
+  // Cart Decrement
   function cartcountdec(id) {
     const updatecart = cart
       .map((item) => {
@@ -91,14 +121,15 @@ function App() {
     setCart(updatecart);
   }
 
+  // Remove Cart
   function removecartitem(id) {
     const remove = cart.filter((item, index) => {
       return item.id !== id;
     });
     setCart(remove);
   }
-
   console.log("cart===>", cart);
+
   return (
     <div>
       <div className="container">
@@ -109,6 +140,7 @@ function App() {
               activMenu={activMenu}
               filteritem={filteritem}
               uniqueList={uniqueList}
+              menuData={filterditem}
             />
           )}
           {showCart ? (
@@ -121,7 +153,7 @@ function App() {
             />
           ) : (
             <Product
-              menuData={menuData}
+              menuData={filterditem}
               Addcartfunct={Addcartfunct}
               cartcountinc={cartcountinc}
               cartcountdec={cartcountdec}
