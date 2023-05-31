@@ -10,12 +10,11 @@ function Product({
   cartobj,
 }) {
   const value = (item) => {
-    if (cartobj && cartobj.length) {
+    if (cartobj && cartobj.length > 0) {
       const data = cartobj.find((x) => {
         return x.Idd === item.id;
       });
-
-      return data?.quan || "";
+      return data !== undefined ? data?.quan : "";
     }
   };
 
@@ -54,14 +53,14 @@ function Product({
                 {value(item) ? (
                   <>
                     <button className="cartbutton1">
-                      <AiOutlinePlus
-                        className="plusbutton"
-                        onClick={() => cartcountinc(item.id)}
-                      />
-                      {value(item)}
                       <AiOutlineMinus
                         className="plusbutton"
-                        onClick={() => cartcountdec(item.id)}
+                        onClick={() => cartcountdec(item.id, item.id)}
+                      />
+                      {value(item)}
+                      <AiOutlinePlus
+                        className="plusbutton"
+                        onClick={() => cartcountinc(item.id, item.id)}
                       />
                     </button>
                     <button

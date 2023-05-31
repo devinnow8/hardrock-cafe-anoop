@@ -6,55 +6,77 @@ import React, { useEffect, useState } from "react";
 import Category from "./component/Category";
 import Cartlist from "./component/Cartlist";
 import { MdSystemSecurityUpdateWarning } from "react-icons/md";
+import BaseAPI from "./Api/BaseAPI";
 
 function App() {
   const [menuData, setMenudata] = useState([]);
   const [activMenu, setActivMenu] = useState("All");
   const [cart, setCart] = useState([]);
   const [filterditem, setFilterditem] = useState([]);
-  let cartobj = cart.map((x) => ({ Idd: x.id, quan: x.quantity }));
+  let cartobj =
+    cart && cart.map((x) => ({ Idd: x.product.id, quan: x.quantity }));
   const [showCart, setShowCart] = useState(false);
+  const [cart_id, setCart_id] = useState("");
 
-  // Action For empty cart
-  useEffect(() => {
-    console.log("showCart11", cart);
-
-    if (cart.length === 0) {
-      setShowCart(false);
-      console.log("showCart22", showCart);
+  // let userId = "e6502103-bdb3-4073-8557-6cabfe8b5933";
+  let userId = "2fc86e9f-7afa-4855-bba8-4d3f312642e9";
+  const getProduct = async () => {
+    let response = await BaseAPI.get(`/cart/carts/${userId}/`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    setCart(response?.data?.data?.items);
+    setCart_id(response?.data?.data?.id);
+  };
+  const addtoCart = async (id, quantity) => {
+    let data = {
+      product_id: id,
+      quantity: quantity,
+    };
+    let response = await BaseAPI.post(`/cart/carts/${cart_id}/items/`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      ...data,
+    });
+    if (response) {
+      getProduct();
     }
-  }, [cart]);
+  };
 
-  //API DATA"
-  const url = "http://192.168.1.204:8000/";
-  const getApidata = async (url) => {
-    try {
-      const res = await axios.get(url);
-      console.log("ffffff", res.data);
-
-      setMenudata(res.data);
-    } catch (errror) {
-      console.log("error");
+  const removecart = async (id) => {
+    let res = await BaseAPI.deleteItem(`/cart/carts/${cart_id}/items/${id}`);
+    if (res) {
+      getProduct();
     }
   };
   useEffect(() => {
-    getApidata(`${url}`);
+    getApidata();
+    getProduct();
   }, []);
+
+  // Action For empty cart
+  useEffect(() => {
+    if (cart && cart.length === 0) {
+      setShowCart(false);
+    }
+  }, [cart]);
+
+  // Cart Api
+
+  //API DATA"
+  const getApidata = async (url) => {
+    try {
+      const res = await BaseAPI.get("");
+
+      setMenudata(res.data.data);
+    } catch (errror) {}
+  };
 
   //Cart Quantity
   const Addcartfunct = (product) => {
-    console.log(product);
-
-    const index = cart.findIndex((item) => item.id === product.id);
-
-    if (index === -1) {
-      const updateCAArt = cart.concat({ ...product, quantity: 1 });
-      setCart(updateCAArt);
-    } else {
-      cart[index].quantity += 1;
-      const updateCAArt = [...cart];
-      setCart(updateCAArt);
-    }
+    addtoCart(product.id, 1);
   };
 
   // Category
@@ -62,12 +84,12 @@ function App() {
   const uniqueList = [
     "All",
     ...new Set(
-      menuData.map((curElem) => {
-        return curElem.category;
-      })
+      menuData &&
+        menuData.map((curElem) => {
+          return curElem.category;
+        })
     ),
   ];
-  console.log(uniqueList);
 
   useEffect(() => {
     setFilterditem(menuData);
@@ -90,51 +112,43 @@ function App() {
   };
 
   //Clear Cart
-
   function clearcart() {
     setCart([]);
-    console.log("showCart", showCart);
     setShowCart(false);
   }
 
   // Cart Increment
-  function cartcountinc(id) {
-    const updatecart = cart.map((item, index) => {
-      return item.id === id ? { ...item, quantity: item.quantity + 1 } : item;
-    });
-
-    setCart(updatecart);
+  function cartcountinc(id, product_id) {
+    let updatedCart =
+      cart && cart.filter((item) => item.product.id === product_id);
+    addtoCart(updatedCart[0].product.id, updatedCart[0].quantity + 1);
   }
 
   // Cart Decrement
-  function cartcountdec(id) {
-    const updatecart = cart
-      .map((item) => {
-        return item.id === id
-          ? {
-              ...item,
-              quantity: item.quantity - 1,
-            }
-          : item;
-      })
-      .filter((item) => !!item.quantity);
-    setCart(updatecart);
+  function cartcountdec(id, product_id) {
+    let updatedCart =
+      cart && cart.filter((item) => item.product.id === product_id);
+    if (updatedCart[0].quantity === 1) {
+      removecart(updatedCart[0].id);
+    } else {
+      addtoCart(updatedCart[0].product.id, updatedCart[0].quantity - 1);
+    }
   }
 
   // Remove Cart
   function removecartitem(id) {
-    const remove = cart.filter((item, index) => {
-      return item.id !== id;
-    });
-    setCart(remove);
+    let filterdItem = cart && cart.filter((item) => item.product.id === id);
+    removecart(filterdItem[0].id);
   }
-  console.log("cart===>", cart);
 
   return (
     <div>
       <div className="container">
         <div className="App">
-          <Header count={cart.length} handleCartClick={handleCartClick} />
+          <Header
+            count={cart && cart.length}
+            handleCartClick={handleCartClick}
+          />
           {!showCart && (
             <Category
               activMenu={activMenu}
