@@ -202,3 +202,63 @@
   color: rgb(255, 255, 252);
   background-color: rgb(175, 151, 116);
 }
+.signup {
+  background-image: url(./Image/signupbgimg.jpeg);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.top {
+  width: 300px;
+  box-shadow: 0 0 3px rgba(25, 255, 255, 0.3);
+  background: rgb(185, 194, 124);
+  padding: 20px;
+  border-radius: 30px;
+
+  text-align: center;
+}
+.Topg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 260px);
+}
+.signuplogo {
+  width: 140px;
+  height: 140px;
+}
+.form-control {
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  padding: 7px;
+  margin-bottom: 4px;
+}
+.signupbtn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #3f5cb5;
+  width: 50%;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 14px;
+  cursor: pointer;
+}
+.loginbtn {
+  border: none;
+  background-color: transparent;
+  color: #3f5cb5;
+  cursor: pointer;
+}
+.loginbtn2 {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #3f5cb5;
+  width: 50%;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 14px;
+  cursor: pointer;
+}

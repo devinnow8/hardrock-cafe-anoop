@@ -2,6 +2,7 @@ import axios from "axios";
 let baseUrl = "http://192.168.1.204:8000";
 
 const response = (data, error) => ({ data, error });
+
 async function post(endpointURL, data, config) {
   try {
     const serverResponse = await axios.post(
@@ -14,6 +15,7 @@ async function post(endpointURL, data, config) {
     return response("", error.response.data);
   }
 }
+
 async function get(endpointURL) {
   try {
     const serverResponse = await axios.get(`${baseUrl}${endpointURL}`);
