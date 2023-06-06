@@ -21,6 +21,7 @@ function Register() {
       navigate("/Product");
     }
   }, []);
+
   const forloginuppage = () => {
     navigate("/");
   };
@@ -42,14 +43,14 @@ function Register() {
       };
       let loginResult = await BaseApi.post("signin/", loginpayload);
 
-      if (loginResult) {
+      if (loginResult.data !== "") {
         setIsSubmitting(false);
         localStorage.setItem("userData", JSON.stringify(loginResult.data.data));
         navigate("/Product");
       } else {
         setIsSubmitting(false);
-        if (e.response.data.errors !== undefined) {
-          setValidationErrors(e.response.data.errors);
+        if (loginResult.data.errors !== undefined) {
+          setValidationErrors(loginResult.data.errors);
         }
       }
     }

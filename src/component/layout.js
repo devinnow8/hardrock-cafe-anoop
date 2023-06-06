@@ -19,7 +19,6 @@ const Layout = () => {
   const [cart_id, setCart_id] = useState("");
   const [user, setUser] = useState({});
 
-  //Product
   const getProduct = async () => {
     let user = JSON.parse(localStorage.getItem("userData"));
     if (user) {
