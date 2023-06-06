@@ -1,5 +1,5 @@
 import axios from "axios";
-let baseUrl = "http://192.168.1.204:8000";
+let baseUrl = "http://192.168.1.204:8000/";
 
 const response = (data, error) => ({ data, error });
 
@@ -16,17 +16,20 @@ async function post(endpointURL, data, config) {
   }
 }
 
-async function get(endpointURL) {
+async function get(endpointURL, config) {
   try {
-    const serverResponse = await axios.get(`${baseUrl}${endpointURL}`);
+    const serverResponse = await axios.get(`${baseUrl}${endpointURL}`, config);
     return response(serverResponse, "");
   } catch (error) {
     return response("", error.message);
   }
 }
-async function deleteItem(endpointURL) {
+async function deleteItem(endpointURL, config) {
   try {
-    const serverResponse = await axios.delete(`${baseUrl}${endpointURL}`);
+    const serverResponse = await axios.delete(
+      `${baseUrl}${endpointURL}`,
+      config
+    );
     return response(serverResponse, "");
   } catch (error) {
     return response("", error.message);

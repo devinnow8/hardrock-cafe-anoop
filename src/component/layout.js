@@ -5,6 +5,7 @@ import Category from "./Category";
 import Cartlist from "./Cartlist";
 import BaseAPI from "../Api/BaseAPI";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Layout = () => {
   const navigate = useNavigate();
@@ -16,48 +17,63 @@ const Layout = () => {
     cart && cart.map((x) => ({ Idd: x.product.id, quan: x.quantity }));
   const [showCart, setShowCart] = useState(false);
   const [cart_id, setCart_id] = useState("");
+  const [user, setUser] = useState({});
 
-  // let userId = "e6502103-bdb3-4073-8557-6cabfe8b5933";
-  let userId = "2fc86e9f-7afa-4855-bba8-4d3f312642e9";
   const getProduct = async () => {
-    let response = await BaseAPI.get(`/cart/carts/${userId}/`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    setCart(response?.data?.data?.items);
-    setCart_id(response?.data?.data?.id);
+    let user = JSON.parse(localStorage.getItem("userData"));
+    if (user) {
+      let response = await BaseAPI.get(`user/${user.id}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.access}`,
+        },
+      });
+
+      setCart(response?.data?.data?.items);
+      setCart_id(response?.data?.data?.id);
+    }
   };
+  useEffect(() => {
+    getApidata();
+    getProduct();
+  }, []);
+  //Authentication
+
   const addtoCart = async (id, quantity) => {
+    let user = JSON.parse(localStorage.getItem("userData"));
     let data = {
       product_id: id,
       quantity: quantity,
     };
-    let response = await BaseAPI.post(`/cart/carts/${cart_id}/items/`, {
-      headers: {
-        "Content-Type": "application/json",
+    let response = await BaseAPI.post(
+      `/user/${user.id}/items/`,
+      {
+        ...data,
       },
-      ...data,
-    });
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.access}`,
+        },
+      }
+    );
     if (response) {
       getProduct();
     }
   };
 
   const removecart = async (id) => {
-    let res = await BaseAPI.deleteItem(`/cart/carts/${cart_id}/items/${id}`);
+    let user = JSON.parse(localStorage.getItem("userData"));
+    let res = await BaseAPI.deleteItem(`/user/${user.id}/items/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.access}`,
+      },
+    });
     if (res) {
       getProduct();
     }
   };
-  useEffect(() => {
-    let user = JSON.parse(localStorage.getItem("isLogedin"));
-    if (!user) {
-      navigate("/login");
-    }
-    getApidata();
-    getProduct();
-  }, []);
 
   // Action For empty cart
   useEffect(() => {
@@ -71,7 +87,7 @@ const Layout = () => {
   //API DATA"
   const getApidata = async (url) => {
     try {
-      const res = await BaseAPI.get("");
+      const res = await BaseAPI.get("list");
 
       setMenudata(res.data.data);
     } catch (errror) {}

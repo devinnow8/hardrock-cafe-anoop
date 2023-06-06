@@ -47,6 +47,10 @@
 .Menusize1 {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1550px;
+  margin: auto;
+  justify-content: space-between;
 }
 .Menusize2 {
   margin: 0 0 20px 31px;
@@ -210,9 +214,9 @@
   background-size: 100% 100%;
 }
 .top {
-  width: 300px;
+  width: 340px;
   box-shadow: 0 0 3px rgba(25, 255, 255, 0.3);
-  background: rgb(185, 194, 124);
+  background: rgb(203 182 147);
   padding: 20px;
   border-radius: 30px;
 
@@ -229,7 +233,7 @@
   height: 140px;
 }
 .form-control {
-  border-radius: 15px;
+  border-radius: 8px;
   border: 1px solid #ccc;
   padding: 7px;
   margin-bottom: 4px;
@@ -239,7 +243,7 @@
   padding: 8px 12px;
   border-radius: 20px;
   background-color: #3f5cb5;
-  width: 50%;
+  width: 30%;
   color: #fff;
   text-transform: capitalize;
   font-size: 14px;
@@ -256,9 +260,21 @@
   padding: 8px 12px;
   border-radius: 20px;
   background-color: #3f5cb5;
-  width: 50%;
+  width: 30%;
   color: #fff;
   text-transform: capitalize;
   font-size: 14px;
+  cursor: pointer;
+}
+.loginbtn3 {
+  background-color: transparent;
+  color: #3f5cb5;
+  border: none;
+  cursor: pointer;
+}
+.logoutbtn3 {
+  background-color: transparent;
+  color: #de3c3c;
+  border: none;
   cursor: pointer;
 }
