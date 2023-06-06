@@ -21,7 +21,7 @@ function Register() {
       navigate("/Product");
     }
   }, []);
-  const forloginpage = () => {
+  const forloginuppage = () => {
     navigate("/");
   };
   const registerAction = async (e) => {
@@ -100,7 +100,7 @@ function Register() {
             </button>
             <p>
               Already have an account ?
-              <button className="loginbtn3" onClick={() => forloginpage()}>
+              <button className="loginbtn3" onClick={() => forloginuppage()}>
                 Login here
               </button>
             </p>

@@ -19,6 +19,7 @@ const Layout = () => {
   const [cart_id, setCart_id] = useState("");
   const [user, setUser] = useState({});
 
+  //Product
   const getProduct = async () => {
     let user = JSON.parse(localStorage.getItem("userData"));
     if (user) {
@@ -62,6 +63,7 @@ const Layout = () => {
     }
   };
 
+  //Remove cart
   const removecart = async (id) => {
     let user = JSON.parse(localStorage.getItem("userData"));
     let res = await BaseAPI.deleteItem(`/user/${user.id}/items/${id}`, {
@@ -81,8 +83,6 @@ const Layout = () => {
       setShowCart(false);
     }
   }, [cart]);
-
-  // Cart Api
 
   //API DATA"
   const getApidata = async (url) => {

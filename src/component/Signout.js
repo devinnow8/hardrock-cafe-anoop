@@ -4,9 +4,6 @@ import BaseApi from "../Api/BaseAPI";
 
 function Signout() {
   const navigate = useNavigate();
-  // const tologinpage = () => {
-  //   navigate("/");
-  // };
 
   const actionsignout = () => {
     let user = JSON.parse(localStorage.getItem("userData"));
