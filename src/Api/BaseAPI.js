@@ -24,6 +24,30 @@ async function get(endpointURL, config) {
     return response("", error.message);
   }
 }
+async function patch(endpointURL, data, config) {
+  try {
+    const serverResponse = await axios.patch(
+      `${baseUrl}${endpointURL}`,
+      data,
+      config
+    );
+    return response(serverResponse, "");
+  } catch (error) {
+    return response("", error.message);
+  }
+}
+async function put(endpointURL, data, config) {
+  try {
+    const serverResponse = await axios.put(
+      `${baseUrl}${endpointURL}`,
+      data,
+      config
+    );
+    return response(serverResponse, "");
+  } catch (error) {
+    return response("", error.message);
+  }
+}
 async function deleteItem(endpointURL, config) {
   try {
     const serverResponse = await axios.delete(
@@ -35,4 +59,4 @@ async function deleteItem(endpointURL, config) {
     return response("", error.message);
   }
 }
-export default { post, get, deleteItem };
+export default { post, get, patch, put, deleteItem };

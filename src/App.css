@@ -216,7 +216,7 @@
 .top {
   width: 340px;
   box-shadow: 0 0 3px rgba(25, 255, 255, 0.3);
-  background: rgb(203 182 147);
+  background: rgb(174 178 228);
   padding: 20px;
   border-radius: 30px;
 
@@ -233,6 +233,7 @@
   height: 140px;
 }
 .form-control {
+  width: 60%;
   border-radius: 8px;
   border: 1px solid #ccc;
   padding: 7px;
@@ -277,4 +278,59 @@
   color: #de3c3c;
   border: none;
   cursor: pointer;
+}
+.Updatepass {
+  background-color: #ded1a9;
+  border: 1px solid rgb(155, 82, 189);
+  color: #da2e2e;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+.Updatepass:hover {
+  color: rgb(68, 154, 78);
+}
+.forgotpass {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 8px 15px 6px 8px rgb(225, 155, 155);
+}
+.forgotpass form {
+  text-align: center;
+}
+.forgotpass1 {
+  width: 400px;
+  box-shadow: 0 0 6px #ccc;
+  border-radius: 5px;
+  padding: 2rem;
+}
+.titlef {
+  margin: 0;
+}
+.form-control3 {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px 7px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+.loginbtn5 {
+  background-color: transparent;
+  color: #3f5cb5;
+  border: none;
+  cursor: pointer;
+}
+.loginbtn4 {
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: #3f5cb5;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 11px;
 }

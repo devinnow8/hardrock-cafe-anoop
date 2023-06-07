@@ -21,6 +21,9 @@ function Login() {
     navigate("/signup");
   };
 
+  const forforgetpage = () => {
+    navigate("/Forgetpasword");
+  };
   const loginAction = async (e) => {
     setValidationErrors({});
     e.preventDefault();
@@ -37,14 +40,14 @@ function Login() {
     } else {
       if (result.error !== undefined) {
         setValidationErrors(result.error.detail);
-        toast(result.error.detail, {
+        toast.error(result.error.detail, {
           position: "top-right",
           autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
+          hideProgressBar: true,
+
           pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
+          draggable: false,
+
           theme: "light",
         });
       }
@@ -79,6 +82,11 @@ function Login() {
               placeholder="Password"
             />
             <br />
+            <p>
+              <button className="loginbtn3" onClick={() => forforgetpage()}>
+                forget pasword
+              </button>
+            </p>
             <div>
               <button onClick={loginAction} className="loginbtn2">
                 <ToastContainer

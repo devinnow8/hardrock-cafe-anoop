@@ -1,5 +1,6 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 function Cartlist({
   cart,
@@ -8,10 +9,20 @@ function Cartlist({
   cartcountdec,
   cartcountinc,
 }) {
+  const navigate = useNavigate();
+  const pasword = () => {
+    navigate("/Changepasword");
+  };
+
   return (
     <div>
       <div>
-        <p className="userinfo">+91 8219776387 </p>
+        <p className="userinfo">
+          {JSON.parse(localStorage.getItem("userData")).phone_number}
+          <button onClick={() => pasword()} className="Updatepass">
+            Change Password
+          </button>
+        </p>
       </div>
       {cart &&
         cart.length > 0 &&

@@ -13,6 +13,7 @@ function Header(props) {
         <div onClick={() => props.handleCartClick()} className="Frontcartlogo">
           <HiShoppingCart className="Frontcartlogo1" />
           <sup> {props.count}</sup>
+
           <Signout />
         </div>
       </div>

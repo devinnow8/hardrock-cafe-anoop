@@ -20,6 +20,9 @@ function Signout() {
 
   return (
     <div>
+      <p className="userinfo">
+        {JSON.parse(localStorage.getItem("userData")).username}
+      </p>
       <button
         className="logoutbtn3"
         onClick={() => {
