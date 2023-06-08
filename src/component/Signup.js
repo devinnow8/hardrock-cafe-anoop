@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import BaseApi from "../Api/BaseAPI";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
+
 function Register() {
   const navigate = useNavigate();
   const [Username, setUsername] = useState("");
@@ -59,53 +61,55 @@ function Register() {
   return (
     <div className="signup">
       <img src={logo} className="signuplogo" />
-      <div className="Topg">
-        <div className="top">
-          <h2>Sign Up Now </h2>
-          <form onSubmit={(e) => registerAction(e)}>
-            <input
-              type="text"
-              value={Username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="form-control"
-              placeholder=" Username"
-            />
-            <br />
-            <input
-              type="email"
-              value={Email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              placeholder="E-mail"
-            />
-            <br />
-            <input
-              type="password"
-              value={Password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="tel"
-              value={Phonenumber}
-              onChange={(e) => setPhonenumber(e.target.value)}
-              className="form-control"
-              placeholder="Mobile No"
-            />
-            <br />
+      <div class="animate__animated animate__flip">
+        <div className="Topg">
+          <div className="top">
+            <h2>Sign Up Now </h2>
+            <form onSubmit={(e) => registerAction(e)}>
+              <input
+                type="text"
+                value={Username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="form-control"
+                placeholder=" Username"
+              />
+              <br />
+              <input
+                type="email"
+                value={Email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form-control"
+                placeholder="E-mail"
+              />
+              <br />
+              <input
+                type="password"
+                value={Password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form-control"
+                placeholder="Password"
+              />
+              <br />
+              <input
+                type="tel"
+                value={Phonenumber}
+                onChange={(e) => setPhonenumber(e.target.value)}
+                className="form-control"
+                placeholder="Mobile No"
+              />
+              <br />
 
-            <button className="signupbtn" type="submit">
-              signup
-            </button>
-            <p>
-              Already have an account ?
-              <button className="loginbtn3" onClick={() => forloginuppage()}>
-                Login here
+              <button className="signupbtn" type="submit">
+                signup
               </button>
-            </p>
-          </form>
+              <p>
+                Already have an account ?
+                <button className="loginbtn3" onClick={() => forloginuppage()}>
+                  Login here
+                </button>
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </div>

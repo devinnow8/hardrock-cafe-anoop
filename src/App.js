@@ -3,11 +3,9 @@ import Layout from "./component/layout";
 import Register from "./component/Signup";
 import "./App.css";
 import Login from "./component/Login";
-import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import Changepasword from "./component/Changepasword";
 import Forgetpasword from "./component/Forgetpasword";
-
+import ConfirmForgetpassword from "./component/ConfirmForgetpassword";
 function App() {
   return (
     <div>
@@ -18,6 +16,11 @@ function App() {
           <Route exact path="/" element={<Login />} />
           <Route exact path="/Changepasword" element={<Changepasword />} />
           <Route exact path="/Forgetpasword" element={<Forgetpasword />} />
+          <Route
+            exact
+            path="/confirmForgetpassword/uid/:uid/token/:token"
+            element={<ConfirmForgetpassword />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

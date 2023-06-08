@@ -1,42 +1,51 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import BaseApi from "../Api/BaseAPI";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const Changepasword = () => {
-  const [old_password, setOldPassword] = useState("");
-  const [new_password, setNewPassword] = useState("");
+import "animate.css";
+const ConfirmForgetpassword = () => {
+  let { uid, token } = useParams();
+  const [new_password1, setNew_password1] = useState("");
+  const [new_password2, setNew_password2] = useState("");
   const [error, setError] = useState("");
+  const [alert, setAlert] = useState("");
   const navigate = useNavigate();
-  const productpage = () => {
-    navigate("/Product");
-  };
 
   const handleSubmit = async (e) => {
-    let user = JSON.parse(localStorage.getItem("userData"));
-
-    const response = await BaseApi.put(
-      "changepassword/",
+    const response = await BaseApi.post(
+      "confirmForgetpassword/uid/<uid>/token/<token>",
       {
-        old_password,
-        new_password,
+        new_password1,
+        new_password2,
+        uid,
+        token,
       },
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${user.access}`,
         },
       }
     );
-
     if (response.data.status === 200) {
-      navigate("/product");
+      toast(alert, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+
+        pauseOnHover: true,
+        draggable: false,
+
+        theme: "light",
+      });
+      navigate("/");
     } else {
-      setError("Wrong password,Please try again");
+      setError("This field may not be blank");
       toast(error, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: true,
+
         pauseOnHover: true,
         draggable: false,
 
@@ -44,27 +53,22 @@ const Changepasword = () => {
       });
     }
   };
-
   return (
-    <div>
-      <h2>Update Password</h2>
-
+    <div class="animate__animated animate__backInUp">
       <div>
-        <label>Old Password</label>
         <input
           type="password"
-          value={old_password}
-          onChange={(e) => setOldPassword(e.target.value)}
-          required
+          value={new_password1}
+          onChange={(e) => setNew_password1(e.target.value)}
+          placeholder="Password"
         />
       </div>
       <div>
-        <label>New Password</label>
         <input
           type="password"
-          value={new_password}
-          onChange={(e) => setNewPassword(e.target.value)}
-          required
+          value={new_password2}
+          onChange={(e) => setNew_password2(e.target.value)}
+          placeholder="Confirm Password"
         />
       </div>
 
@@ -84,11 +88,8 @@ const Changepasword = () => {
         <ToastContainer />
         Update Password
       </button>
-      <button className="loginbtn5" onClick={() => productpage()}>
-        Back to Home Page
-      </button>
     </div>
   );
 };
 
-export default Changepasword;
+export default ConfirmForgetpassword;

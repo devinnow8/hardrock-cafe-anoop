@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import BaseApi from "../Api/BaseAPI";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -55,63 +57,67 @@ function Login() {
   };
 
   return (
-    <div className="signup">
-      <img src={logo} className="signuplogo" />
-      <div className="Topg">
-        <div className="top">
-          <h2>Login </h2>
-          <form
-            onSubmit={(e) => {
-              loginAction(e);
-            }}
-          >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-control"
-              placeholder="E-mail"
-            />
-            <br />
-
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-control"
-              placeholder="Password"
-            />
-            <br />
-            <p>
-              <button className="loginbtn3" onClick={() => forforgetpage()}>
-                forget pasword
-              </button>
-            </p>
-            <div>
-              <button onClick={loginAction} className="loginbtn2">
-                <ToastContainer
-                  position="top-right"
-                  autoClose={2000}
-                  hideProgressBar={false}
-                  newestOnTop={false}
-                  closeOnClick
-                  rtl={true}
-                  pauseOnFocusLoss
-                  draggable
-                  pauseOnHover
-                  theme="light"
+    <div>
+      <div className="signup">
+        <img src={logo} className="signuplogo" />
+        <div class="animate__animated animate__backInDown">
+          <div className="Topg">
+            <div className="top">
+              <h2>Login </h2>
+              <form
+                onSubmit={(e) => {
+                  loginAction(e);
+                }}
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="form-control"
+                  placeholder="E-mail"
                 />
-                <ToastContainer />
-                Login
-              </button>
+                <br />
+
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="form-control"
+                  placeholder="Password"
+                />
+                <br />
+                <p>
+                  <button className="loginbtn3" onClick={() => forforgetpage()}>
+                    forget pasword
+                  </button>
+                </p>
+                <div>
+                  <button onClick={loginAction} className="loginbtn2">
+                    <ToastContainer
+                      position="top-right"
+                      autoClose={2000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={true}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                      theme="light"
+                    />
+                    <ToastContainer />
+                    Login
+                  </button>
+                </div>
+                <p>
+                  Don't have an account ?
+                  <button className="loginbtn3" onClick={() => forsignuppage()}>
+                    SignUp
+                  </button>
+                </p>
+              </form>
             </div>
-            <p>
-              Don't have an account ?
-              <button className="loginbtn3" onClick={() => forsignuppage()}>
-                SignUp
-              </button>
-            </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>

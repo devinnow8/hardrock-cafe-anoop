@@ -214,12 +214,11 @@
   background-size: 100% 100%;
 }
 .top {
-  width: 340px;
+  width: 400px;
   box-shadow: 0 0 3px rgba(25, 255, 255, 0.3);
-  background: rgb(174 178 228);
+  background: rgb(255 255 255);
   padding: 20px;
-  border-radius: 30px;
-
+  border-radius: 15px;
   text-align: center;
 }
 .Topg {
@@ -233,11 +232,11 @@
   height: 140px;
 }
 .form-control {
-  width: 60%;
+  width: 83%;
   border-radius: 8px;
   border: 1px solid #ccc;
   padding: 7px;
-  margin-bottom: 4px;
+  margin-bottom: 19px;
 }
 .signupbtn {
   border: none;
