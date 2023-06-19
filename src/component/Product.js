@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import "animate.css";
 
 function Product({
   menuData,
@@ -22,16 +23,21 @@ function Product({
     <div className="Menusize1">
       {menuData.map((item, index) => {
         return (
-          <div className="Menusize2">
+          <div className="Menusize2 animate__animated animate__fadeInLeft">
             <div className="Menusize-image">
               <img src={item.image} />
             </div>
             <div className="Menusize-content">
               <div className="nameprice">
                 <div className="name">
-                  <h3>{item.title}</h3>
+                  <div class="animate__animated animate__backInDown">
+                    <h3>{item.title}</h3>
+                  </div>{" "}
                 </div>
-                <div className="price"> ₹{item.price} </div>
+                <div className="price animate__fadeInRight">
+                  {" "}
+                  ₹{item.price}{" "}
+                </div>
               </div>
 
               <p>{item.description}</p>
